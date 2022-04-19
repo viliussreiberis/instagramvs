@@ -19,7 +19,7 @@ function Header() {
   const [open, setOpen] = useRecoilState(modalState)
   const router = useRouter()
 
-  console.log(session)
+ 
 
   return (
     <div className="sticky top-0  z-50 border-b bg-white py-2 shadow-sm">

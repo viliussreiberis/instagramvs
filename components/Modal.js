@@ -39,14 +39,12 @@ function Modal() {
       timestamp: serverTimestamp(),
     })
 
-    console.log('New doc added with id', docRef.id)
-
     const imageRef = ref(storage, `posts/${docRef.id}/image`)
 
     await uploadString(imageRef, selectedFile, 'data_url').then(
       async (snapshot) => {
         const downloadURL = await getDownloadURL(imageRef)
-        console.log(downloadURL)
+
         await updateDoc(doc(db, 'posts', docRef.id), {
           image: downloadURL,
         })
@@ -61,18 +59,13 @@ function Modal() {
   const addImageToPost = (e) => {
     const reader = new FileReader()
     if (e.target.files[0]) {
-      console.log(e.target.files)
-      console.log(e.target.files[0])
       reader.readAsDataURL(e.target.files[0])
     }
 
     reader.onload = (readerEvent) => {
       setSelectedFile(readerEvent.target.result)
-      console.log(readerEvent.target)
     }
   }
-
-  console.log(selectedFile)
 
   return (
     <Transition.Root show={open} as={Fragment}>

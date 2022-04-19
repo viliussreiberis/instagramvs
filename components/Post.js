@@ -56,8 +56,6 @@ function Post({ id, username, userImg, img, caption }) {
     [likes]
   )
 
-  console.log(hasLiked)
-
   const likePost = async (e) => {
     if (hasLiked) {
       await deleteDoc(doc(db, 'posts', id, 'likes', session.user.uid))

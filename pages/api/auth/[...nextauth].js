@@ -12,6 +12,8 @@ export default NextAuth({
     // ...add more providers here
   ],
 
+  secret: 'somesupersecret',
+
   //   theme: {
   //     logo: 'https://links.papareact.com/sq0',
   //     brandColor: 'F13287',
